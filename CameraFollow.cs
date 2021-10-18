@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public GameObject tank;
 
-    private Vector3 offset = new Vector3(0,25,-50);
+    public Transform target;
 
+    public float smoothSpeed = 0.125f;
+
+    public Vector3 offset;
 
 
     // Start is called before the first frame update
@@ -16,9 +17,17 @@ public class CameraFollow : MonoBehaviour
         
     }
 
+    void LateUpdate()
+    {
+        Vector3 desiredPosition = target.position + offset;
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+        transform.position = smoothedPosition;
+
+    }
+
     // Update is called once per frame
     void Update()
     {
-        transform.position = tank.transform.position + offset;
+        
     }
 }
