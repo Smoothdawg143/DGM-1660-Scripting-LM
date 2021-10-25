@@ -60,14 +60,5 @@ public class Weapon : MonoBehaviour
         bullet.GetComponent<Rigidbody>().velocity = muzzle.forward  * bulletSpeed;
     }
     
-    void Start()
-    {
-        
-    }
 
-    
-    void Update()
-    {
-        
-    }
 }
